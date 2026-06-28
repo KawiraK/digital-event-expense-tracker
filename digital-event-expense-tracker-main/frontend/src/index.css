@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --font: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  font-family: var(--font);
+  background: #F4F7FE;
+  color: #1B2559;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+button { font-family: var(--font); }
+input, select, textarea { font-family: var(--font); }
+
+input::placeholder, textarea::placeholder { color: #A3AED0; }
+
+a { color: inherit; }
+
+/* Inputs: blue focus ring matching the brand */
+input:focus, select:focus, textarea:focus {
+  border-color: #2563EB !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Sidebar hover */
+.nav-item:hover { background: rgba(255,255,255,0.06) !important; }
+.nav-item[style*="rgb(37, 99, 235)"]:hover { background: #1D4ED8 !important; }
+
+/* Custom scrollbars */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #d7def0; border-radius: 999px; border: 2px solid #F4F7FE; }
+::-webkit-scrollbar-thumb:hover { background: #c2cce6; }
+
+/* Accessibility: visible keyboard focus */
+:focus-visible { outline: 2px solid #2563EB; outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* Responsive: collapse sidebar to icons on narrow screens */
+@media (max-width: 900px) {
+  .app-sidebar { width: 76px !important; }
+  .app-sidebar .nav-label { display: none !important; }
+  .app-sidebar .brand { justify-content: center; }
+  .app-main header .nav-label { display: none !important; }
+}
+
+@media (max-width: 600px) {
+  .app-main main { padding-left: 16px !important; padding-right: 16px !important; }
+  .app-main header { padding-left: 16px !important; padding-right: 16px !important; }
+}
+
+/* Hide the auth brand panel on small screens (form takes full width) */
+@media (max-width: 860px) {
+  .auth-brand { display: none !important; }
+}
+
+/* Dashboard / two-column rows collapse on tablets */
+@media (max-width: 1000px) {
+  .dash-row { grid-template-columns: 1fr !important; }
+  .form-preview-row { grid-template-columns: 1fr !important; }
+}
